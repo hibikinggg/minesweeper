@@ -11,7 +11,6 @@
 .samplestyle {
   width: 30px;
   height: 30px;
-  background: url(~/src/assets/images/icons.png);
 }
 
 .bombMapstyle {
@@ -24,6 +23,7 @@
 .cellstyle {
   width: 30px;
   height: 30px;
+  background: url('~/src/assets/images/icons.png') no-repeat;
   background-color: gray;
   border: 1px solid;
   border-color: black;

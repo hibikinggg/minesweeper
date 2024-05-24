@@ -16,13 +16,19 @@ const Home = () => {
   ]);
 
   const ClickHandler = (x: number, y: number) => {
-    console.log(x, y);
+    // console.log(x, y);
     const newUserInputs = structuredClone(userInputs);
     newUserInputs[y][x] = 1;
     setuserInputs(newUserInputs);
-    const math = Math.floor(Math.random() * 9);
-    const newmath = Math.floor(Math.random() * 9);
+    const math = Math.floor(Math.random() * 10);
+    const newmath = Math.floor(Math.random() * 10);
     console.log(math, newmath);
+    for (let m = 0; m < 9; m++) {
+      const math = Math.floor(Math.random() * 9);
+      const newmath = Math.floor(Math.random() * 9);
+      newUserInputs[math][newmath] = 11;
+      setuserInputs(newUserInputs);
+    }
   };
 
   const [userInputs, setuserInputs] = useState([
@@ -44,8 +50,13 @@ const Home = () => {
       <div className={styles.bombMapstyle}>
         {userInputs.map((row, y) =>
           row.map((color, x) => (
-            <div className={styles.cellstyle} key={`${x}-${y}`} onClick={() => ClickHandler(x, y)}>
-              <div className={styles.stonestyle}>{color}</div>
+            <div
+              className={styles.cellstyle}
+              style={{ backgroundPosition: `${-30 * (color - 1)}px` }}
+              key={`${x}-${y}`}
+              onClick={() => ClickHandler(x, y)}
+            >
+              <div className={styles.stonestyle} />
             </div>
           )),
         )}
