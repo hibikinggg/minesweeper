@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import styles from './index.module.css';
 
+const bombs = (newUserInputs, setuserInputs) => {
+  const math = Math.floor(Math.random() * 9);
+  const newmath = Math.floor(Math.random() * 9);
+  console.log(math, newmath);
+  for (let m = 0; m < 10; m++) {
+    const math = Math.floor(Math.random() * 9);
+    const newmath = Math.floor(Math.random() * 9);
+    newUserInputs[math][newmath] = 11;
+    setuserInputs(newUserInputs);
+  }
+};
 const Home = () => {
   const [samplePos, setsamplePos] = useState(0);
   const [bombMap, setBombMap] = useState([
@@ -18,17 +29,10 @@ const Home = () => {
   const ClickHandler = (x: number, y: number) => {
     // console.log(x, y);
     const newUserInputs = structuredClone(userInputs);
-    newUserInputs[y][x] = 1;
-    setuserInputs(newUserInputs);
-    const math = Math.floor(Math.random() * 10);
-    const newmath = Math.floor(Math.random() * 10);
-    console.log(math, newmath);
-    for (let m = 0; m < 9; m++) {
-      const math = Math.floor(Math.random() * 9);
-      const newmath = Math.floor(Math.random() * 9);
-      newUserInputs[math][newmath] = 11;
-      setuserInputs(newUserInputs);
-    }
+    bombs(newUserInputs, setuserInputs);
+    console.log(x,y);
+    for(a = 0;a < 81);
+
   };
 
   const [userInputs, setuserInputs] = useState([
