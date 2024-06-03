@@ -54,14 +54,15 @@ const Home = () => {
 
     const newUserInputs = structuredClone(userInputs);
     const bombset = bombs(newUserInputs);
-    console.log(bombset);
+    // console.log(bombset);
     setuserInputs(bombset);
     for (const [dx, dy] of directions) {
       const a = 1;
-      while (a > 0 && a < 9) {
+      while (a < 0 && a < 9) {
         const ax = x + a * dx;
         const bx = y + a * dy;
-        if (ax >= 8 || bx >= 8 || ax < 0 || bx < 0 || bombMap[ax][bx] === 0) {
+        console.log(dx, dy);
+        if (ax >= 9 || bx >= 9 || ax < 0 || bx < 0 || bombMap[ax][bx] === 0) {
           break;
         }
       }
