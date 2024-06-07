@@ -11,6 +11,7 @@ const directions = [
   [0, -1],
   [-1, 1],
 ];
+
 const bombs = (newUserInputs: number[][]) => {
   if (newUserInputs.flat().filter((cell) => cell === 0).length === 81) {
     for (let m = 0; m < 10; m++) {
@@ -24,6 +25,17 @@ const bombs = (newUserInputs: number[][]) => {
   return newUserInputs;
 };
 const Home = () => {
+  const [stonemap, setstonemap] = useState([
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+  ]);
   const [samplePos, setsamplePos] = useState(0);
   const [bombMap, setBombMap] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -56,14 +68,11 @@ const Home = () => {
     const bombset = bombs(newUserInputs);
     // console.log(bombset);
     setuserInputs(bombset);
-    for (const [dx, dy] of directions) {
-      const a = 1;
-      while (a < 0 && a < 9) {
-        const ax = x + a * dx;
-        const bx = y + a * dy;
-        console.log(dx, dy);
-        if (ax >= 9 || bx >= 9 || ax < 0 || bx < 0 || bombMap[ax][bx] === 0) {
-          break;
+
+    for (let x = 0; x < 9; x++) {
+      for (let y = 0; y < 9; y++) {
+        for (const [dx, dy] of directions) {
+          console.log(bombset);
         }
       }
     }

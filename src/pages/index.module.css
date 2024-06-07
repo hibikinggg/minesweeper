@@ -6,6 +6,7 @@
   height: 100vh;
   min-height: 100vh;
   padding: 0 0.5rem;
+  background-color: #181a1b;
 }
 
 .samplestyle {
@@ -16,17 +17,21 @@
 .bombMapstyle {
   display: flex;
   flex-wrap: wrap;
-  width: 270px;
-  height: 270px;
+  width: 282px;
+  height: 282px;
+  border-top: 6px solid #808080;
+  border-right: 6px solid white;
+  border-bottom: 6px solid white;
+  border-left: 6px solid #808080;
 }
 
 .cellstyle {
   width: 30px;
   height: 30px;
   background: url('~/src/assets/images/icons.png') no-repeat;
-  background-color: gray;
+  background-color: #c6c6c6;
   border: 1px solid;
-  border-color: black;
+  border-color: #919191;
 }
 
 .stonestyle {
