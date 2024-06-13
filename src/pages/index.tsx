@@ -25,17 +25,6 @@ const bombs = (newUserInputs: number[][]) => {
   return newUserInputs;
 };
 const Home = () => {
-  const [stonemap, setstonemap] = useState([
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-  ]);
   const [samplePos, setsamplePos] = useState(0);
   const [bombMap, setBombMap] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -66,16 +55,26 @@ const Home = () => {
 
     const newUserInputs = structuredClone(userInputs);
     const bombset = bombs(newUserInputs);
-    // console.log(bombset);
-    setuserInputs(bombset);
-
-    for (let x = 0; x < 9; x++) {
-      for (let y = 0; y < 9; y++) {
+    console.log(bombset);
+    let a = 0;
+    for (let y = 0; y < 9; y++) {
+      for (let x = 0; x < 9; x++) {
+        a += 1;
+        if (bombset[y][x] === 11) continue;
+        let bombcount = 0;
         for (const [dx, dy] of directions) {
-          console.log(bombset);
+          const ax = dx + x;
+          const bx = dy + y;
+          if (0 > ax || ax > 8 || 0 > bx || bx > 8) continue;
+          if (bombset[bx][ax] === 11) {
+            bombcount += 1;
+          }
         }
+        bombset[y][x] = bombcount;
       }
     }
+    console.log(a);
+    setuserInputs(bombset);
   };
   // const board: number[][] = [];
   // console.log(samplePos);
