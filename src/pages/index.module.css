@@ -12,6 +12,11 @@
 .samplestyle {
   width: 30px;
   height: 30px;
+  border: 1px solid;
+  border-top: white;
+  border-right: #808080;
+  border-bottom: #808080;
+  border-left: white;
 }
 
 .bombMapstyle {
@@ -34,5 +39,12 @@
   border-color: #919191;
 }
 
-.stonestyle {
+.style {
+  width: 30px;
+  height: 30px;
+  border: 1px solid;
+  border-top: white;
+  border-right: #808080;
+  border-bottom: #808080;
+  border-left: white;
 }

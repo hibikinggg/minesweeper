@@ -26,6 +26,7 @@ const bombs = (newUserInputs: number[][]) => {
 };
 const Home = () => {
   const [samplePos, setsamplePos] = useState(0);
+
   const [bombMap, setBombMap] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -50,11 +51,23 @@ const Home = () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 
+  const [bomb, setbomb] = useState([
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+  ]);
+
   const ClickHandler = (x: number, y: number) => {
     // console.log(x, y);
 
-    const newUserInputs = structuredClone(userInputs);
-    const bombset = bombs(newUserInputs);
+    const newbombmap = structuredClone(bombMap);
+    const bombset = bombs(newbombmap);
     console.log(bombset);
     let a = 0;
     for (let y = 0; y < 9; y++) {
@@ -73,9 +86,12 @@ const Home = () => {
         bombset[y][x] = bombcount;
       }
     }
+
     console.log(a);
-    setuserInputs(bombset);
+    setBombMap(bombset);
+    bombMap[y][x] = userInputs[y][x];
   };
+
   // const board: number[][] = [];
   // console.log(samplePos);
 
@@ -90,7 +106,10 @@ const Home = () => {
               key={`${x}-${y}`}
               onClick={() => ClickHandler(x, y)}
             >
-              <div className={styles.stonestyle} />
+              <div
+                className={styles.stonestyle}
+                style={{}}
+              />
             </div>
           )),
         )}
