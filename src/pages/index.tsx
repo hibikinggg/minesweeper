@@ -86,10 +86,19 @@ const Home = () => {
         bombset[y][x] = bombcount;
       }
     }
-
     console.log(a);
     setBombMap(bombset);
-    bombMap[y][x] = userInputs[y][x];
+    userInputs[y][x] = newbombmap[y][x];
+    setuserInputs(userInputs);
+
+    for (let i = 1; i < directions.length; i = i++) {
+      const yy = y + directions[i][1];
+      const xx = x + directions[i][0];
+      if (yy < 0 || yy > 8 || xx < 0 || xx > 8) continue;
+      if (bombset[yy][xx] === 0 && userInputs[yy][xx] === -1) {
+        userInputs[yy][xx] = 0;
+      }
+    }
   };
 
   // const board: number[][] = [];
@@ -106,10 +115,7 @@ const Home = () => {
               key={`${x}-${y}`}
               onClick={() => ClickHandler(x, y)}
             >
-              <div
-                className={styles.stonestyle}
-                style={{}}
-              />
+              <div className={styles.stonestyle} style={{}} />
             </div>
           )),
         )}
